@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Syncfusion.SfSchedule.XForms;
+﻿using Syncfusion.SfSchedule.XForms;
 using Xamarin.Forms;
 
 namespace ScheduleXamarin
@@ -26,7 +21,7 @@ namespace ScheduleXamarin
             }
         }
 
-        void schedule_ViewHeaderTapped(System.Object sender, Syncfusion.SfSchedule.XForms.ViewHeaderTappedEventArgs e)
+        void schedule_ViewHeaderTapped(object sender, ViewHeaderTappedEventArgs e)
         {
             switch (viewModel.ViewType)
             {

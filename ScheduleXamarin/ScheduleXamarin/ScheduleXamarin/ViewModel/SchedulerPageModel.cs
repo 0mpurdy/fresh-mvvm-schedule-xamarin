@@ -1,11 +1,9 @@
-using FreshMvvm;
-using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Text;
 using System.Windows.Input;
+using FreshMvvm;
+using Syncfusion.SfSchedule.XForms;
 using Xamarin.Forms;
 
 namespace ScheduleXamarin
@@ -29,9 +27,9 @@ namespace ScheduleXamarin
 
         public SchedulerPageModel()
         {
-            this.Meetings = new ObservableCollection<Meeting>();
-            this.AddAppointmentDetails();
-            this.AddAppointments();
+            Meetings = new ObservableCollection<Meeting>();
+            AddAppointmentDetails();
+            AddAppointments();
         }
 
         private ScheduleView viewType = ScheduleView.WeekView;
@@ -39,7 +37,8 @@ namespace ScheduleXamarin
         public ScheduleView ViewType
         {
             get => viewType;
-            set {
+            set
+            {
                 viewType = value;
                 RaisePropertyChanged();
             }
@@ -66,13 +65,13 @@ namespace ScheduleXamarin
         {
             get
             {
-                return this.meetings;
+                return meetings;
             }
 
             set
             {
-                this.meetings = value;
-                this.RaisePropertyChanged("Meetings");
+                meetings = value;
+                RaisePropertyChanged();
             }
         }
 
@@ -81,35 +80,39 @@ namespace ScheduleXamarin
         /// </summary>
         private void AddAppointmentDetails()
         {
-            this.currentDayMeetings = new List<string>();
-            this.currentDayMeetings.Add("General Meeting");
-            this.currentDayMeetings.Add("Plan Execution");
-            this.currentDayMeetings.Add("Project Plan");
-            this.currentDayMeetings.Add("Consulting");
-            this.currentDayMeetings.Add("Support");
-            this.currentDayMeetings.Add("Development Meeting");
-            this.currentDayMeetings.Add("Scrum");
-            this.currentDayMeetings.Add("Project Completion");
-            this.currentDayMeetings.Add("Release updates");
-            this.currentDayMeetings.Add("Performance Check");
+            currentDayMeetings = new List<string>
+            {
+                "General Meeting",
+                "Plan Execution",
+                "Project Plan",
+                "Consulting",
+                "Support",
+                "Development Meeting",
+                "Scrum",
+                "Project Completion",
+                "Release updates",
+                "Performance Check"
+            };
 
-            this.colorCollection = new List<Color>();
-            this.colorCollection.Add(Color.FromHex("#FFA2C139"));
-            this.colorCollection.Add(Color.FromHex("#FFD80073"));
-            this.colorCollection.Add(Color.FromHex("#FF1BA1E2"));
-            this.colorCollection.Add(Color.FromHex("#FFE671B8"));
-            this.colorCollection.Add(Color.FromHex("#FFF09609"));
-            this.colorCollection.Add(Color.FromHex("#FF339933"));
-            this.colorCollection.Add(Color.FromHex("#FF00ABA9"));
-            this.colorCollection.Add(Color.FromHex("#FFE671B8"));
-            this.colorCollection.Add(Color.FromHex("#FF1BA1E2"));
-            this.colorCollection.Add(Color.FromHex("#FFD80073"));
-            this.colorCollection.Add(Color.FromHex("#FFA2C139"));
-            this.colorCollection.Add(Color.FromHex("#FFA2C139"));
-            this.colorCollection.Add(Color.FromHex("#FFD80073"));
-            this.colorCollection.Add(Color.FromHex("#FF339933"));
-            this.colorCollection.Add(Color.FromHex("#FFE671B8"));
-            this.colorCollection.Add(Color.FromHex("#FF00ABA9"));
+            colorCollection = new List<Color>
+            {
+                Color.FromHex("#FFA2C139"),
+                Color.FromHex("#FFD80073"),
+                Color.FromHex("#FF1BA1E2"),
+                Color.FromHex("#FFE671B8"),
+                Color.FromHex("#FFF09609"),
+                Color.FromHex("#FF339933"),
+                Color.FromHex("#FF00ABA9"),
+                Color.FromHex("#FFE671B8"),
+                Color.FromHex("#FF1BA1E2"),
+                Color.FromHex("#FFD80073"),
+                Color.FromHex("#FFA2C139"),
+                Color.FromHex("#FFA2C139"),
+                Color.FromHex("#FFD80073"),
+                Color.FromHex("#FF339933"),
+                Color.FromHex("#FFE671B8"),
+                Color.FromHex("#FF00ABA9")
+            };
         }
 
         /// <summary>
@@ -129,10 +132,10 @@ namespace ScheduleXamarin
                     {
                         From = today.AddDays(day).AddHours(meetingHour),
                         EventName = $"{meetingHour}: {this.currentDayMeetings[random.Next(currentDayMeetings.Count)]}",
-                        Color = this.colorCollection[random.Next(colorCollection.Count)],
+                        Color = colorCollection[random.Next(colorCollection.Count)],
                     };
                     meeting.To = meeting.From.AddHours(1);
-                    this.Meetings.Add(meeting);
+                    Meetings.Add(meeting);
                 }
             }
         }
