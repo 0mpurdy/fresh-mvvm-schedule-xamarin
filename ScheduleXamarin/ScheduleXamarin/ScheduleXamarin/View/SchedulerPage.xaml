@@ -1,19 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:ScheduleXamarin"
-             xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms"
-             x:Class="ScheduleXamarin.SchedulerPage">
+<ContentPage
+    x:Class="ScheduleXamarin.SchedulerPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:ScheduleXamarin"
+    xmlns:schedule="clr-namespace:Syncfusion.SfSchedule.XForms;assembly=Syncfusion.SfSchedule.XForms">
 
     <Grid>
-        <schedule:SfSchedule x:Name="schedule" ScheduleView="WeekView" DataSource="{Binding Meetings}">
+        <schedule:SfSchedule
+            x:Name="schedule"
+            CellTappedCommand="{Binding CellTappedCommand}"
+            DataSource="{Binding Meetings}"
+            ScheduleView="{Binding ViewType}"
+            ViewHeaderTapped="schedule_ViewHeaderTapped">
             <schedule:SfSchedule.AppointmentMapping>
                 <schedule:ScheduleAppointmentMapping
-			            SubjectMapping="EventName" 
-			            ColorMapping="Color"
-			            StartTimeMapping="From"
-			            EndTimeMapping="To">
-                </schedule:ScheduleAppointmentMapping>
+                    ColorMapping="Color"
+                    EndTimeMapping="To"
+                    StartTimeMapping="From"
+                    SubjectMapping="EventName" />
             </schedule:SfSchedule.AppointmentMapping>
         </schedule:SfSchedule>
     </Grid>

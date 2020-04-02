@@ -1,9 +1,11 @@
-﻿using FreshMvvm;
+using FreshMvvm;
+using Syncfusion.SfSchedule.XForms;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Text;
+using System.Windows.Input;
 using Xamarin.Forms;
 
 namespace ScheduleXamarin
@@ -31,6 +33,31 @@ namespace ScheduleXamarin
             this.AddAppointmentDetails();
             this.AddAppointments();
         }
+
+        private ScheduleView viewType = ScheduleView.WeekView;
+
+        public ScheduleView ViewType
+        {
+            get => viewType;
+            set {
+                viewType = value;
+                RaisePropertyChanged();
+            }
+        }
+
+        public ICommand CellTappedCommand => new Command<CellTappedEventArgs>(args =>
+        {
+            switch (ViewType)
+            {
+                case ScheduleView.WeekView:
+                    ViewType = ScheduleView.DayView;
+                    break;
+
+                case ScheduleView.MonthView:
+                    ViewType = ScheduleView.WeekView;
+                    break;
+            }
+        });
 
         /// <summary>
         /// Gets or sets meetings.
