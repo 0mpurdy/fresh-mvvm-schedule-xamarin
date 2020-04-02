@@ -119,19 +119,20 @@ namespace ScheduleXamarin
         {
             var today = DateTime.Now.Date;
             var random = new Random();
-            for (int month = -1; month < 2; month++)
+
+            for (int day = -10; day < 10; day++)
             {
-                for (int day = -5; day < 5; day++)
+                for (int count = 0; count < 2; count++)
                 {
-                    for (int count = 0; count < 2; count++)
+                    var meetingHour = random.Next(9, 18);
+                    var meeting = new Meeting
                     {
-                        var meeting = new Meeting();
-                        meeting.From = today.AddMonths(month).AddDays(random.Next(1, 28)).AddHours(random.Next(9, 18));
-                        meeting.To = meeting.From.AddHours(1);
-                        meeting.EventName = this.currentDayMeetings[random.Next(7)];
-                        meeting.Color = this.colorCollection[random.Next(14)];
-                        this.Meetings.Add(meeting);
-                    }
+                        From = today.AddDays(day).AddHours(meetingHour),
+                        EventName = $"{meetingHour}: {this.currentDayMeetings[random.Next(currentDayMeetings.Count)]}",
+                        Color = this.colorCollection[random.Next(colorCollection.Count)],
+                    };
+                    meeting.To = meeting.From.AddHours(1);
+                    this.Meetings.Add(meeting);
                 }
             }
         }
