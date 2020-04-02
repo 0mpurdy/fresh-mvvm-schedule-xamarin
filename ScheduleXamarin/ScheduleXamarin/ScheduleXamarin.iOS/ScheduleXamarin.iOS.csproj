@@ -149,14 +149,14 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule">
-      <Version>17.4.0.55</Version>
+      <Version>18.1.0.42</Version>
     </PackageReference>
-    <PackageReference Include="Xamarin.Forms" Version="4.4.0.991640" />
+    <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\ScheduleXamarin\ScheduleXamarin.csproj">
-      <Project>{27667DC9-6F60-4960-B42C-73523094A1DB}</Project>
+      <Project>{7472E30E-DA0B-48E5-A394-7B54917CEF25}</Project>
       <Name>ScheduleXamarin</Name>
     </ProjectReference>
   </ItemGroup>
