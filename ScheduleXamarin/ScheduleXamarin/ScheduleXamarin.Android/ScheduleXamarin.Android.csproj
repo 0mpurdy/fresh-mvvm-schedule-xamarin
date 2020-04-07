@@ -49,7 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Syncfusion.Xamarin.SfSchedule">
-      <Version>18.1.0.42</Version>
+      <Version>17.3.0.33</Version>
     </PackageReference>
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.530" />
   </ItemGroup>
